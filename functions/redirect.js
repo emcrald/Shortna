@@ -1,7 +1,7 @@
 exports.handler = async (event, context) => {
+  console.log(event);
   const { shortUrl } = event.pathParameters;
 
-  // check if shortUrl exists
   if (!shortUrl) {
     return {
       statusCode: 400,
