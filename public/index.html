@@ -9,7 +9,7 @@
 <body>
   <div class="container">
     <h1>Shortna URL Shortener</h1>
-    <form id="shortenForm" method="POST" action="/shorten">
+    <form id="shortenForm">
       <input type="url" id="url" name="url" placeholder="Enter your URL" required>
       <button type="submit">Shorten URL</button>
     </form>
@@ -22,17 +22,21 @@
 
     form.onsubmit = async (e) => {
       e.preventDefault();
-
-      const url = document.getElementById('url').value;
       
-      const response = await fetch('/shorten', {
+      const url = document.getElementById('url').value;
+
+      const response = await fetch('/.netlify/functions/shorten', {
         method: 'POST',
-        body: new URLSearchParams({ url }),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
       });
 
-      const data = await response.text();
-      shortenedUrlDiv.innerHTML = data;
+      const data = await response.json();
+      if (data.shortUrl) {
+        shortenedUrlDiv.innerHTML = `Shortened URL: <a href="${data.shortUrl}" target="_blank">${data.shortUrl}</a>`;
+      } else {
+        shortenedUrlDiv.innerHTML = 'Error: ' + data.message;
+      }
     };
   </script>
 </body>

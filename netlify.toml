@@ -3,6 +3,11 @@
   publish = "public"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/shorten"
+  to = "/.netlify/functions/shorten"
+  status = 200
+
+[[redirects]]
+  from = "/:shortUrl"
+  to = "/.netlify/functions/redirect/:shortUrl"
   status = 200
