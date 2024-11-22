@@ -7,15 +7,3 @@
   to = "/.netlify/functions/redirect/:shortUrl"
   status = 200
   force = true
-
-[[redirects]]
-  from = "/styles/*"
-  to = "/styles/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/scripts/*"
-  to = "/scripts/:splat"
-  status = 200
-  force = true
