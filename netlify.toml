@@ -6,3 +6,4 @@
   from = "/:shortUrl"
   to = "/.netlify/functions/redirect/:shortUrl"
   status = 200
+  force = true
