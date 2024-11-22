@@ -1,8 +1,14 @@
-const urlDatabase = {};
-
 exports.handler = async (event, context) => {
   const { shortUrl } = event.pathParameters;
-  
+
+  // check if shortUrl exists
+  if (!shortUrl) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Short URL parameter is missing' })
+    };
+  }
+
   const longUrl = urlDatabase[shortUrl];
 
   if (longUrl) {

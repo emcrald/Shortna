@@ -6,8 +6,3 @@
   from = "/:shortUrl"
   to = "/.netlify/functions/redirect/:shortUrl"
   status = 200
-
-[[redirects]]
-  from = "/shorten"
-  to = "/.netlify/functions/shorten"
-  status = 200
