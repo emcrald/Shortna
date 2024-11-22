@@ -1,7 +1,7 @@
 const urlDatabase = {};
 
 exports.handler = async (event, context) => {
-  const shortUrl = event.pathParameters?.shortUrl || event.rawPath.split('/')[1];
+  const shortUrl = event.pathParameters?.shortUrl || (event.rawPath && event.rawPath.split('/')[1]);
 
   if (!shortUrl) {
     return {
