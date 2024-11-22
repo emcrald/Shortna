@@ -1,14 +1,7 @@
 exports.handler = async (event, context) => {
   console.log("Event:", event);
 
-  if (!event.pathParameters) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Path parameters are missing' })
-    };
-  }
-
-  const { shortUrl } = event.pathParameters;
+  const { shortUrl } = event.pathParameters || {};
 
   if (!shortUrl) {
     return {
