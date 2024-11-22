@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ shortUrl: `/${shortUrl}` })
+      body: JSON.stringify({ shortUrl: `https://shortna.netlify.app/${shortUrl}` })
     };
   }
 

@@ -1,5 +1,5 @@
 exports.handler = async (event, context) => {
-  const shortUrl = event.pathParameters ? event.pathParameters.shortUrl : null;
+  const { shortUrl } = event.pathParameters;
 
   if (!shortUrl) {
     return {
