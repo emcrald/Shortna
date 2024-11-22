@@ -1,8 +1,7 @@
-const urlDatabase = {};
-
 exports.handler = async (event, context) => {
   const { shortUrl } = event.pathParameters;
 
+  // check if shortUrl exists
   if (!shortUrl) {
     return {
       statusCode: 400,
