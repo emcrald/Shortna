@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shortna URL Shortener</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Shortna URL Shortener</h1>
+    <form id="shortenForm" method="POST" action="/shorten">
+      <input type="url" id="url" name="url" placeholder="Enter your URL" required>
+      <button type="submit">Shorten URL</button>
+    </form>
+    <div id="shortenedUrl"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('shortenForm');
+    const shortenedUrlDiv = document.getElementById('shortenedUrl');
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+
+      const url = document.getElementById('url').value;
+      
+      const response = await fetch('/shorten', {
+        method: 'POST',
+        body: new URLSearchParams({ url }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      });
+
+      const data = await response.text();
+      shortenedUrlDiv.innerHTML = data;
+    };
+  </script>
+</body>
+</html>
