@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shortna URL Shortener</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Shortna URL Shortener</h1>
@@ -15,7 +17,7 @@
     </form>
     <div id="shortenedUrl"></div>
   </div>
-
+  <a href="https://github.com/emcrald/shortna" class="source-code-btn" target="_blank">View Source Code</a>
   <script>
     const form = document.getElementById('shortenForm');
     const shortenedUrlDiv = document.getElementById('shortenedUrl');
@@ -24,7 +26,7 @@
       e.preventDefault();
 
       const url = document.getElementById('url').value;
-      
+
       const response = await fetch('/.netlify/functions/shorten', {
         method: 'POST',
         body: JSON.stringify({ url }),
@@ -33,11 +35,12 @@
 
       const data = await response.json();
       if (data.shortUrl) {
-        shortenedUrlDiv.innerHTML = `Shortened URL: <a href="${data.shortUrl}">${data.shortUrl}</a>`;
+        shortenedUrlDiv.innerHTML = `Shortened URL: <a href="${data.shortUrl}" target="_blank">${data.shortUrl}</a>`;
       } else {
         shortenedUrlDiv.innerHTML = `Error: ${data.message}`;
       }
     };
   </script>
 </body>
+
 </html>
