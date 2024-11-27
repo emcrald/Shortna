@@ -1,9 +1,11 @@
 const shortid = require('shortid');
+const fs = require('fs');
+const path = require('path');
 
-// store urls in mem
-let urlDatabase = {};
+// path to db
+const dbPath = path.resolve(__dirname, '../db.json');
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   if (event.httpMethod === "POST") {
     const body = JSON.parse(event.body);
     const longUrl = body.url;
@@ -16,7 +18,13 @@ exports.handler = async (event, context) => {
     }
 
     const shortUrl = shortid.generate();
+
+    // read db
+    const urlDatabase = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
     urlDatabase[shortUrl] = longUrl;
+
+    // save db
+    fs.writeFileSync(dbPath, JSON.stringify(urlDatabase, null, 2));
 
     return {
       statusCode: 200,
