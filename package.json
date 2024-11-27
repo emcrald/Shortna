@@ -19,6 +19,7 @@
   "homepage": "https://github.com/emcrald/Shortna#readme",
   "dependencies": {
     "express": "^4.21.1",
+    "mongodb": "^6.11.0",
     "shortid": "^2.2.16",
     "shortna": "file:"
   }
