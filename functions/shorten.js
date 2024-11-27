@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // path to db
-const dbPath = path.resolve(__dirname, '../db.json');
+const dbPath = path.resolve(__dirname, 'db.json');
 
 exports.handler = async (event) => {
   if (event.httpMethod === "POST") {
