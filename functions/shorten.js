@@ -2,8 +2,22 @@ const shortid = require('shortid');
 const fs = require('fs');
 const path = require('path');
 
-// path to db
+// memory database
+let urlDatabase = {};
+
+// path to db.json
 const dbPath = path.resolve(__dirname, 'db.json');
+
+// load db into memory at startup
+try {
+  if (fs.existsSync(dbPath)) {
+    urlDatabase = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
+  } else {
+    console.warn('db.json file not found. starting with an empty database.');
+  }
+} catch (err) {
+  console.error('error loading db.json:', err);
+}
 
 exports.handler = async (event) => {
   if (event.httpMethod === "POST") {
@@ -19,11 +33,9 @@ exports.handler = async (event) => {
 
     const shortUrl = shortid.generate();
 
-    // read db
-    const urlDatabase = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
+    // add to memory database
     urlDatabase[shortUrl] = longUrl;
 
-    // save db
     fs.writeFileSync(dbPath, JSON.stringify(urlDatabase, null, 2));
 
     return {
