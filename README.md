@@ -67,7 +67,14 @@ Try the live version: [**Shortna URL Shortener**](https://shortna.netlify.app)
 - **MongoDB** – Stores short & long URLs  
 - **Netlify Functions** – Serverless backend  
 - **JavaScript** – Frontend and API interaction  
-- **HTML & CSS** – Simple UI  
+- **HTML & CSS** – Simple UI
+
+---
+
+## Designed in Figma  
+
+Shortna's UI design was initially created in Figma and repurposed from **[Jax Convert](https://github.com/emcrald/JaxConvert)**, maintaining the same interface.  
+![image](https://github.com/user-attachments/assets/e488e421-c428-4371-8446-70af8a28aeac)
 
 ---
 
