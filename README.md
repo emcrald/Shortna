@@ -15,7 +15,7 @@ Shortna is a lightweight URL shortener that converts long URLs into short, easy-
 
 ### Live Demo
 
-Try the live version: [**Shortna URL Shortener**](https://shortna.netlify.app)
+Try the live version: [**Shortna URL Shortener**](https://shortna.emcrald.me)
 
 ---
 
